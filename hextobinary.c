@@ -37,7 +37,7 @@ int main()
             printf("-\n");
             return 0;
         }
-        else if (hex_input > 70)
+        else if ((hex_input < '0' || hex_input > '9') && (hex_input < 'A' || hex_input > 'F'))
         {
             printf("* Please use a hex digit [0-F].\n");
         }
