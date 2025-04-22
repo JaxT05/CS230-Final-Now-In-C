@@ -29,6 +29,7 @@ int main()
         char hex_input;
         printf("Enter single hex digit:\n");
         scanf(" %c", &hex_input);
+        // input validation
         hex_input = toupper(hex_input);
 
         if (hex_input == 'X')
