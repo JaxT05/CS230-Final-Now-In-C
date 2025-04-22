@@ -1,27 +1,49 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
 
-int convert_to_int(char char_input)
+void print_binary(char hex_input)
 {
-    // 2.	Translate it to the corresponding integer value. For example, 'A' is 10, 'E' is 14, '3' is 3, etc.
-    int int_convert;
-    return int_convert;
+    for (int i = 3; i >= 0; i--)
+    {
+        printf("%d", (hex_input >> i) & 1);
+    }
+    printf("\n");
 }
-void print_binary(int int_convert)
+
+void convert_to_decimal(char hex_input)
 {
-    // 3.	Use bit wise operations to print 0 or 1 for each bit in the integer value.
+    if (hex_input & 64)
+    {
+        print_binary(hex_input - 55);
+    }
+    else
+    {
+        print_binary(hex_input - 48);
+    }
 }
 int main()
 {
-    // 1.	Read a digit (character) from the user.
-    char char_input;
-    int int_convert;
-    printf("Enter character input:\n");
-    scanf("%c", char_input);
+    while (1)
+    {
+        char hex_input;
+        printf("Enter single hex digit:\n");
+        scanf(" %c", &hex_input);
+        hex_input = toupper(hex_input);
 
-    int_convert = convert_to_int(char_input);
+        if (hex_input == 'X')
+        {
+            printf("-\n");
+            return 0;
+        }
+        else if (hex_input > 70)
+        {
+            printf("* Please use a hex digit [0-F].\n");
+        }
 
-    print_binary(int_convert);
-
-    return 0;
+        else
+        {
+            convert_to_decimal(hex_input);
+        }
+    }
 }
